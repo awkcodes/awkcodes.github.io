@@ -38,12 +38,11 @@ body {
 	font-size: .99em;
 }
 .logo {
-    color :#c6221f;
 }
 .nav-active{
     background-color: #080808;
     border-radius: 15px 0px 15px 0px;
-    color :#c6221f;
+    color :#e0d431;
 }
 .main-nav a:hover {
 	color: #718daa;
@@ -52,7 +51,7 @@ body {
     margin-top: 2rem;
 	min-height: 100vh;
     height: 23rem;
-    background-image: url("../img/bg-doc.jpg");
+    background-image: url("../img/header_bg1.jpg");
     color: white;
     background-size:100% 100%;
     display: flex;
@@ -67,7 +66,7 @@ body {
     background-color: black;
     margin-top:5em;
     font-size: 20px;
-    color :#c6221f;
+    color :#e0d431;
 }
 /* ================================= 
   Media Queries
