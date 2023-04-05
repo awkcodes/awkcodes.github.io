@@ -18,17 +18,15 @@
 
             <ul class="main-nav">
               <li> <a href="../index.html" class="nav-item">Welcome</a></li>
-              <li> <a href="../textarchive.html" class="nav-item">Texts</a></li>		  
-              <li> <a href="../listprojects.html" class="nav-item nav-active"> Projects</a></li>
+              <li> <a href="../textarchive.html" class="nav-item nav-active">Texts</a></li>		  
+              <li> <a href="../listprojects.html" class="nav-item"> Projects</a></li>
               <li> <a href="../logfile.html" class="nav-item"> Recent work</a></li>
               <li> <a href="../about.html" class="nav-item"> About</a></li>
             </ul>
 
-        </div>
-        <div id="description-rss">
             
         </div>
-        <div id="pubdate-rss">2023-03-22</div>
+        <div id="pubdate-rss">2023-04-04</div>
         <div>
             <h2>intro</h2>
            <p>
@@ -38,19 +36,35 @@
            of course git mirroring can be done manually by copying the repo files to another locations, but this approach will make it difficult to keep the copies in sync. (which is what git distribution is made for)
            </p>
             <h2>steps</h2>
-           <p>
+                <div id="description-rss">
             to mirror a git repository using git mirror functionality internals :
+                </div>
             <ul>
                 <li>create empty repository at the destination location</li>   
-                <li>in source repo: git remote add mirror git://example.com/mirror.git</li>   
-                <li>git remote -v to verify that the reference has been added</li>   
-                <li>git push --mirror mirror</li>   
+                <li>in source repo: 
+                    <code>
+                        git remote add mirror git://example.com/mirror.git
+                    </code>
+                </li>   
+                <li>
+                    <code>
+                    git remote -v  
+                    </code>
+to verify that the reference has been added
+                </li>   
+                <li>
+                    <code>
+                    git push --mirror mirror
+                    </code>
+                </li>   
             </ul>
-           </p>
             <h2>git hooks</h2>
            at last we can use git push --mirror mirror to push everytime we make a change in the original repo or when we want to push, but if we want to make this process automatically happen when we push the repo to the src we can use git hooks :
-    #!/bin/bash
+
+    <code>
+    #!/bin/bash  
     git push --mirror mirror
+    </code>
 
     and make it executable 
     chmod +x mirroring.sh
