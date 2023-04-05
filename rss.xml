@@ -1,3 +1,5 @@
+
+
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
@@ -5,14 +7,14 @@
     <author>AWK</author>
     <link>https://awk.codeberg.page</link>
     <description>tech oriented, random blog</description>
-    <lastBuildDate>Wed, 05 Apr 2023 08:14:45 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Apr 2023 08:19:15 +0000</lastBuildDate>
     <item>
       <title>mirroring git repos</title>
-      <link>https://awkcodes.github.io/texts/gitmirrodes.github.io/texts/gitmirror.html</link>
+      <link>https://awkcodes.github.io/texts/gitmirror.html</link>
       <description>
             to mirror a git repository using git mirror functionality internals :
                 </description>
-      <guid>1742325919642d2df5753e62.81646909</guid>
+      <guid>1807642287642d2f038495f5.68826743</guid>
       <pubDate>Tue, 04 Apr 2023 00:00:00 UTC</pubDate>
     </item>
   </channel>
