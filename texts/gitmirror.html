@@ -60,9 +60,8 @@ to verify that the reference has been added
             </ul>
             <h2>git hooks</h2>
            at last, we can use git push --mirror mirror to push every time we make a change in the original repo or when we want to push, but if we want to make this process automatically happen when we push the repo to the src we can use git hooks :
-
+ inside the SRC/.git/hooks/ create a file called post-commit and put the following in it:
     <code>
-    #!/bin/bash  
     git push --mirror mirror
     </code>
 
