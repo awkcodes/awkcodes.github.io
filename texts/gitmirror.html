@@ -30,17 +30,17 @@
         <div>
             <h2>intro</h2>
            <p>
-           git mirroring is a process of replicating a repository from one location to another one. to ensure that there is multiple copies of the repository available for use when needed. these mirrors can be used as backups, or to ensure accessing repositories easily for large distributed teams.   
+           git mirroring is a process of replicating a repository from one location to another one. to ensure that there are multiple copies of the repository available for use when needed. these mirrors can be used as backups, or to ensure accessing repositories easily for large distributed teams.   
            </p>
            <p>
-           of course git mirroring can be done manually by copying the repo files to another locations, but this approach will make it difficult to keep the copies in sync. (which is what git distribution is made for)
+           of course, git mirroring can be done manually by copying the repo files to other locations, but this approach will make it difficult to keep the copies in sync. (which is what git distribution is made for)
            </p>
             <h2>steps</h2>
                 <div id="description-rss">
             to mirror a git repository using git mirror functionality internals :
                 </div>
             <ul>
-                <li>create empty repository at the destination location</li>   
+                <li>create an empty repository at the destination location</li>   
                 <li>in source repo: 
                     <code>
                         git remote add mirror git://example.com/mirror.git
@@ -59,7 +59,7 @@ to verify that the reference has been added
                 </li>   
             </ul>
             <h2>git hooks</h2>
-           at last we can use git push --mirror mirror to push everytime we make a change in the original repo or when we want to push, but if we want to make this process automatically happen when we push the repo to the src we can use git hooks :
+           at last, we can use git push --mirror mirror to push every time we make a change in the original repo or when we want to push, but if we want to make this process automatically happen when we push the repo to the src we can use git hooks :
 
     <code>
     #!/bin/bash  
