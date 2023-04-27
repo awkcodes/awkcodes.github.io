@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on AWK/</title>
+    <link>http://awk.codeberg.page/</link>
+    <description>Recent content in Home on AWK/</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Abdallah Khalaf (CC)</copyright><atom:link href="http://awk.codeberg.page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>projects</title>
+      <link>http://awk.codeberg.page/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://awk.codeberg.page/projects/</guid>
+      <description> asciid image to ASCII art convertor mapss pattern based password generator marss RSS feed generator for static sites </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://awk.codeberg.page/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://awk.codeberg.page/about/</guid>
+      <description>Hey i&amp;rsquo;m Abdallah Khalaf, i&amp;rsquo;m a self-thaught computer programmer and electronics technician, i got interested in programming couple of years ago and started tinkering and writing programs for different platforms, ranging from web browsers to 16-bit microcontrollers. this website is an attempt to share things i discover or learn, projects, personal ideas and some opinions.
+contact info: contact.awkcodes@gmail.com twitter github codeberg </description>
+    </item>
+    
+  </channel>
+</rss>
