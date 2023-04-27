@@ -6,6 +6,17 @@
     <description>Recent content in tech blog on AWK/</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Abdallah Khalaf (CC)</copyright><atom:link href="http://awk.codeberg.page/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Abdallah Khalaf (CC)</copyright>
+    <lastBuildDate>Thu, 27 Apr 2023 09:08:05 +0300</lastBuildDate><atom:link href="http://awk.codeberg.page/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git Mirroring</title>
+      <link>http://awk.codeberg.page/posts/git-mirroring/</link>
+      <pubDate>Thu, 27 Apr 2023 09:08:05 +0300</pubDate>
+      
+      <guid>http://awk.codeberg.page/posts/git-mirroring/</guid>
+      <description>intro git mirroring is a process of replicating a repository from one location to another one. to ensure that there are multiple copies of the repository available for use when needed. these mirrors can be used as backups, or to ensure accessing repositories easily for large distributed teams.
+of course, git mirroring can be done manually by copying the repo files to other locations, but this approach will make it difficult to keep the copies in sync.</description>
+    </item>
+    
   </channel>
 </rss>

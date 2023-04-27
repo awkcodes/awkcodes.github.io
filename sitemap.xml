@@ -3,14 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://awk.codeberg.page/</loc>
+    <lastmod>2023-04-27T09:08:05+03:00</lastmod>
   </url><url>
     <loc>http://awk.codeberg.page/projects/</loc>
   </url><url>
     <loc>http://awk.codeberg.page/posts/</loc>
+    <lastmod>2023-04-27T09:08:05+03:00</lastmod>
   </url><url>
     <loc>http://awk.codeberg.page/texts/</loc>
   </url><url>
     <loc>http://awk.codeberg.page/about/</loc>
+  </url><url>
+    <loc>http://awk.codeberg.page/posts/git-mirroring/</loc>
+    <lastmod>2023-04-27T09:08:05+03:00</lastmod>
   </url><url>
     <loc>http://awk.codeberg.page/categories/</loc>
   </url><url>
