@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Custom User Profiles in Django</title>
+    <link rel="stylesheet" href="css/djangousermodels.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Creating Custom User Profiles in Django</h1>
+        <p>If you're using Django to build a complex system, you have probably encountered situations where you needed multiple types of profiles to handle different system users, such as buyers and sellers, customers and suppliers, or regular users and VIP users.</p>
+        <p>The default Django <code>User</code> model won't be sufficient when you need to extend it with additional fields. In such cases, you need to create custom user profiles.</p>
+        
+        <h2>Extending the User Model</h2>
+        <p>First, we'll use the <code>AbstractUser</code> class, which provides a user profile without the unnecessary fields that you wouldn't need when extending the <code>User</code> model. Here's how to do it in a <code>models.py</code> file of an installed app in your project:</p>
+        <pre><code class="python">
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    is_supplier = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
+
+class Supplier(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    # Add supplier-specific fields here
+
+class Customer(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    # Add customer-specific fields here
+        </code></pre>
+
+        <p>Here, <code>CustomUser</code> replaces the main Django <code>User</code> model, and we add boolean fields to define the user types (e.g., a user might be both a supplier and a customer). Then, we define the specific user types as models connected to our main <code>CustomUser</code>. You can add as many profiles as needed with their respective fields.</p>
+
+        <h2>Creating Views and Serializers</h2>
+        <p>Next, we create the views. This depends on how you're building the system. If you're using Django REST Framework (like I am), you need to serialize the models of profiles and <code>CustomUser</code>. Ensure that when creating a supplier, the <code>is_supplier</code> field is set to <code>True</code>, and do the same for other user types.</p>
+
+        <pre><code class="python">
+from rest_framework import serializers
+from .models import CustomUser, Supplier, Customer
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'password', 'email', 'is_supplier', 'is_customer')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = CustomUser.objects.create_user(**validated_data)
+        return user
+
+class SupplierSerializer(serializers.ModelSerializer):
+    user = CustomUserSerializer()
+
+    class Meta:
+        model = Supplier
+        fields = ('user',)
+
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        user = CustomUser.objects.create_user(**user_data, is_supplier=True)
+        supplier = Supplier.objects.create(user=user, **validated_data)
+        return supplier
+
+class CustomerSerializer(serializers.ModelSerializer):
+    user = CustomUserSerializer()
+
+    class Meta:
+        model = Customer
+        fields = ('user',)
+
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        user = CustomUser.objects.create_user(**user_data, is_customer=True)
+        customer = Customer.objects.create(user=user, **validated_data)
+        return customer
+        </code></pre>
+
+        <h2>Creating Views</h2>
+        <pre><code class="python">
+from rest_framework import generics
+from .models import Supplier, Customer
+from .serializers import SupplierSerializer, CustomerSerializer
+from rest_framework.permissions import AllowAny
+
+class SupplierCreate(generics.CreateAPIView):
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+    permission_classes = [AllowAny]
+
+class CustomerCreate(generics.CreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    permission_classes = [AllowAny]
+        </code></pre>
+
+        <p>Finally, go to your <code>settings.py</code> file and add:</p>
+        <pre><code class="python">AUTH_USER_MODEL = 'app.CustomUser'</code></pre>
+
+        <p>Then, register the URLs for these views.</p>
+
+        <p>Now you can create custom profiles for users, grant each user type permissions, and create different views based on user types.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
+
